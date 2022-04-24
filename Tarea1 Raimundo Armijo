@@ -1,0 +1,445 @@
+#include <iostream>
+#include <fstream>
+#include <cstring>
+#include <cstdlib>
+#include <cstdio>
+#include <string>
+#include <stdlib.h>
+#include <sstream>
+using namespace std;
+
+class Persona
+{
+	public:
+	struct {
+		string nom,rut,dir,telf;
+		char sex;
+		int edad;
+	}persona;	
+	Persona(){ };
+	~Persona(){ };
+	void datosper();
+	void mostrarper();
+};
+
+
+class asignatura {
+	public:
+	string asig[5]={"PROGRAMACION","BASE DE DATOS","ALGORITMO Y ESTRUCTURA DE DATOS","DESARROLLO WEB Y MOBIL","PARADIGMAS DE PROGRAMACION"};
+	string cod[5]={"PR001","BD002","AE003","DM004","PP005"};
+	void mostrarasig();
+	asignatura(){	};
+	~asignatura(){ };
+};
+
+class Profesor: public virtual Persona
+{
+	public:
+  string rutsprof[5]={"107626734","713123210","106813506","115348230","120945456"};
+	string cat;
+	int cant;
+	Profesor(){	};
+	~Profesor(){ };
+	void datosprof();
+	void mostrarprof();
+  int leer_rut();
+  void leer_txt();           
+  void leer_manual_txt();    
+  void entregarnotas();      
+  void entregar_notas_ordenadas(); 
+};
+
+
+int Profesor::leer_rut(){
+  
+  if(rutsprof[0]==persona.rut or rutsprof[1]==persona.rut or rutsprof[2]==persona.rut or rutsprof[3]==persona.rut or rutsprof[4]==persona.rut){
+
+};
+
+void Persona::datosper() {
+  cout<<"Ingrese Nombre: "; cin>>persona.nom;
+  cout<<"Ingrese Rut: "; cin>>persona.rut;
+  cout<<"Ingrese Direccion: "; cin>>persona.dir;
+  cout<<"Ingrese Telefono: "; cin>>persona.telf;
+  
+}
+void Persona::mostrarper(){
+  cout<<"Nombre:"<<persona.nom;
+  cout<<"Rut:"<<persona.rut;
+  cout<<"Direccion"<<persona.dir;
+  cout<<"Telefono"<<persona.telf;
+
+};
+
+void Profesor::leer_manual_txt(){
+  	FILE *archivo; // FILE se escribe en mayuscula
+	
+
+char nom[40];
+char texto[]="";
+cout<<"Escriba el nombre del archivo: ";
+cin.getline(nom,40);
+  
+archivo = fopen( nom, "w");	// En el segundo parametro se escribe la forma en que sera abierto "w"
+fprintf(archivo,texto);
+cout << "Escriba su texto: ";
+cin.getline(texto, sizeof(texto));
+fprintf(archivo,texto);
+system("pause");
+
+return;
+
+};
+
+
+void asignatura::mostrarasig(){
+	cout<<asig[0];
+	cout<<" "<<cod[0]<<endl;
+	cout<<asig[1];
+	cout<<" "<<cod[1]<<endl;
+	cout<<asig[2];
+	cout<<" "<<cod[2]<<endl;
+	cout<<asig[3];
+	cout<<" "<<cod[3]<<endl;
+	cout<<asig[4];
+	cout<<" "<<cod[4]<<endl;
+};
+
+void Profesor::leer_txt(){
+	double num1,num2,num3,num4;
+	asignatura cur;
+    string nombreArchivo = "tex.txt";
+    ifstream archivo(nombreArchivo.c_str());
+    string linea,nomb,rut,n1,n2,n3,n4;
+    int res,j,i=0,lon;
+    string arreglo[100];
+    char b,l;
+    float prom;
+    // Obtener línea de archivo, y almacenar contenido en "linea"
+    while (getline(archivo, linea)) {
+        // Lo vamos imprimiendo
+        cout << "Una línea: ";
+        cout << linea << endl;
+        lon = linea.length();
+        cout<<" "<<lon;
+       	for (j=0;j<lon;j++){
+			
+			l=linea[j];
+			b=' ';
+       		if (l!=b){
+       			if(i==0)
+       				nomb=nomb+linea[j];
+            if (i==1)
+              rut=rut+linea[j];
+				    if(i==2)
+       				n1=n1+linea[j];
+       			if(i==3)
+       				n2=n2+linea[j];
+       			if(i==4)
+       				n3=n3+linea[j];
+       			if(i==5)
+       				n4=n4+linea[j];
+			};
+			else{
+				i++;
+			};
+		};
+
+      
+		istringstream(n1) >> num1;
+		istringstream(n2) >> num2;
+		istringstream(n3) >> num3;
+		istringstream(n4) >> num4;
+		prom=(num1+num2+num3+num4)/4;
+		cout<<nomb<<endl;
+      string apell; 
+      string rut;
+		cout<<n1<<endl;
+		cout<<n2<<endl;
+		cout<<n3<<endl;
+		cout<<n4<<endl;
+		cout<<"Promedio"<<prom<<endl;
+		i=0;
+		nomb=" ";
+		n1=" ";
+		n2=" ";
+		n3=" ";
+		n4=" ";
+	};
+	cur.mostrarasig();	
+	
+};
+
+void Profesor::datosprof(){
+		int i;
+		datosper();
+		cin.ignore();
+		cout<<"Escriba la Categoria: ";getline(cin, cat);	
+	};
+void Profesor::mostrarprof(){
+		int i;
+		mostrarper();
+		cout << "Categoria : "<<cat<<endl;
+	};
+
+class Estudiante: public virtual Persona
+{
+	public:
+	string carr;
+	int can;
+	Estudiante(){ };
+	~Estudiante(){ };
+	void datosest();
+	void mostrarest();
+  void ver_notas();
+};
+
+void Estudiante::ver_notas(){
+  void (ofstream archivo)
+  string rut2;
+  string arr[15];
+  cout<<"Ingrese su rut";cin>>rut2;
+  ofstream archivo("tex.txt");
+  while (getline(archivo,rut1,rut2)){
+  cout << rut1,rut2 << endl; 
+};
+    if(rut2==rut1)
+      cout<<"Sus notas son ",arr[i];
+system("pause")
+
+};
+void Estudiante::datosest() {
+		int i;
+		//datosper();
+		cout<<"Ingresar Carrera que Estudia";
+		cin>>carr;
+  };
+void Estudiante::mostrarest(){
+		//mostrarper();
+		cout<<"\n Carrera: "<<carr;
+  };
+	
+class Asignatura: public Profesor, public Estudiante
+{
+	public:
+	string s[10];
+	string a[10],c[10];
+	char nom[40]= "Estudiante.txt";
+	int cant;
+	string mat[5]={"PROGRAMACION","BASE DE DATOS","ALGORITMO Y ESTRUCTURA DE DATOS","DESARROLLO WEB Y MOBIL","PARADIGMAS DE PROGRAMACION"};
+	string cod[5]={"PR001","BD002","AE003","DM004","PP005"};
+	Asignatura();
+	~Asignatura();
+	void ingresardatose();
+	void mostrare();
+	void ingresardatosp();
+	void mostrarp();
+};
+void Asignatura::mostrarp(){
+		mostrarprof();
+		cout << "Cantidad Asignatura : "<<cant<<endl;
+		cout<<"Asignaturas: \n";	
+		for(int i=0;i<cant;i++){
+			cout<<a[i]<<endl;
+		}
+};
+void Asignatura::ingresardatosp(){
+	int opcion,opc;
+	datosprof();
+	cout<<"Escriba la Cantidad de Asignaturas: ";cin>> cant;
+	for (int i=0;i<cant;i++){
+		cout<<"Seleccione las Asignaturas: ";
+		cout<<"\n 1. "<<mat[0];
+		cout<<"\n 2. "<<mat[1];
+		cout<<"\n 3. "<<mat[2];
+		cout<<"\n 4. "<<mat[3];
+		cout<<"\n 5. "<<mat[4];
+		cout<<"\n Seleccione una Opcion: ";
+		cin>>opcion;
+		switch (opcion){
+			case 1: {
+			a[i]=mat[0];
+			c[i]=cod[0];
+			break;
+			}
+			case 2: {
+			a[i]=mat[1];
+			c[i]=cod[1];
+			break;
+			}
+			case 3: {
+			a[i]=mat[2];
+			c[i]=cod[2];
+			break;
+			}
+			case 4: {
+			a[i]=mat[3];
+			c[i]=cod[3];
+			break;
+			}
+			case 5: {
+			a[i]=mat[4];
+			c[i]=cod[4];
+			break;
+			}
+			}
+		
+		cout<<"\n 1. Seccion 1";
+		cout<<"\n 2. Seccion 2";
+		cout<<"\n Seleccione la seccion: ";			
+		cin>>opc;
+		switch (opc){
+			case 1: {
+				s[i]="1";
+				break;
+			}
+			case 2: {
+				s[i]="2";
+				break;
+			}
+		}
+ 	}
+};
+
+
+void Asignatura::ingresardatose(){
+	int opcion,opc;
+	datosest();
+	cout<<"Escriba la Cantidad de Asignaturas: ";cin>> cant;
+	for (int i=0;i<cant;i++){
+		cout<<"Seleccione las Asignaturas: ";
+		cout<<"\n 1. "<<mat[0];
+		cout<<"\n 2. "<<mat[1];
+		cout<<"\n 3. "<<mat[2];
+		cout<<"\n 4. "<<mat[3];
+		cout<<"\n 5. "<<mat[4];
+		cout<<"\n Seleccione una Opcion: ";
+		cin>>opcion;
+		switch (opcion){
+		case 1: {
+			a[i]=mat[0];
+			c[i]=cod[0];
+			break;
+		}
+		case 2: {
+			a[i]=mat[1];
+			c[i]=cod[1];
+			break;
+		} 
+		case 3: {
+			a[i]=mat[2];
+			c[i]=cod[2];
+			break;
+		} 
+		case 4: {
+			a[i]=mat[3];
+			c[i]=cod[3];
+			break;
+		} 
+		case 5: {
+			a[i]=mat[4];
+			c[i]=cod[4];
+			break;
+		} 
+		}
+		cout<<"\n 1. Seccion 1";
+		cout<<"\n 2. Seccion 2";
+		cout<<"\n Seleccione la seccion: ";			
+		cin>>opc;
+		switch (opc){
+			case 1: {
+				s[i]="1";
+				break;
+			}
+			case 2: {
+				s[i]="2";
+				break;
+			}
+		}
+	}
+}; 
+void Asignatura::mostrare(){
+	FILE *archivo; // FILE se escribe en mayuscula
+	mostrarest();
+
+char nom[40];
+
+char texto[]="";
+cout<<"Escriba el nombre del archivo: ";
+cin.getline(nom,40);
+	
+	cout<<"Asignaturas: \n";	
+	for(int i=0;i<cant;i++){
+		cout<<a[i]<<endl;
+		cout<<c[i]<<endl;
+		cout<<s[i]<<endl;
+	}
+
+archivo = fopen( nom, "w");	// En el segundo parametro se escribe la forma en que sera abierto "w"
+
+	
+	
+fprintf(archivo,texto);
+cout << "Escriba su texto: ";
+cin.getline(texto, sizeof(texto));
+fprintf(archivo,texto);
+system("pause");
+
+return;
+
+}
+
+int main(int argc, char** argv) {
+	Asignatura as;
+  Profesor p;
+  Estudiante e;
+  Persona pe;
+	int opc,opcc;
+	cout<<"Sistema de Notas \n";
+	cout<<"1. Profesor: \n";
+	cout<<"2. Estudiante: \n";
+	cout<<"3. Salir \n";
+	cout<<"Seleccionar Opcion: ";
+	cin>>opc;
+	cin.ignore();
+	switch (opc){
+		case 1:
+			as.ingresardatosp();
+      p.leer_rut();
+			as.mostrarp();
+      cout<<"1)Ingresar notas manual"<<endl;
+      cout<<"2)Ingresar notas txt";
+      cin>>opcc;
+      if (opcc==1)
+        p.leer_manual_txt();
+      if (opcc==2)
+        p.leer_txt();
+			break;
+		case 2:
+			as.ingresardatose();
+			as.mostrare();
+      e.ver_notas();
+			break;
+		case 3:
+			cout<<"Saliendo del sistema";
+	}
+	
+	return 0;
+
+ struct
+{
+        string nombre;
+        char  inicial;
+        int   edad;
+        float nota;
+    } persona;
+ 
+    persona.nombre = "Miguel";
+    persona.inicial = 'M';
+    persona.edad = 20;
+    persona.nota = 7.5;
+    cout << "La edad es " << persona.edad;
+ 
+    return 0;
+
+}
